@@ -1,4 +1,6 @@
-converts CSV files in a folder to Excel files.
+Author: Alex
+Date: 1/1/2025
+Description: This script converts CSV files in a folder to Excel files.
 
 Features:
 
