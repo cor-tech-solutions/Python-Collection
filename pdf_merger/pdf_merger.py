@@ -28,13 +28,14 @@ def merge_pdfs(pdf_paths, output_path):
     try:
         merger.write(output_path) # Write the merged PDF to the output file
         merger.close() # Close the merger object to release resources
-        print(f"Error writing the merged PDF: {e}", file=sys.stderr)
-        return False
+        return True # Return True if successful
     except Exception as e:
         print(f"Error writing the merged PDF: {e}", file=sys.stderr)
+        return False
     
 
 def main():
+    """Main function to handle command-line arguments and call the merge function."""
     if len(sys.argv) < 3:
         print("Usage: python merge_pdfs.py output.pdf input1.pdf [input2.pdf ...]", file=sys.stderr)
         return 1 # Indicate an error
@@ -44,6 +45,7 @@ def main():
     
     # Call merge_pdfs and handle the return value.
     if merge_pdfs(input_pdfs, output_pdf):
+        print(f"Successfully merged PDFs into {output_pdf}") # Success message
         return 0 # Indicate success
     else:
         return 1 # Indicate failure
